@@ -42,9 +42,21 @@ export function encodeFrom(prefix: string, suffix: string): string {
     return `${prefix}_${suffix}`
 }
 
-export function encodeFromUUID(prefix: string, str: string): string {
-    const encoded = encode(Buffer.from(str, 'utf8'))
-    return encodeFrom(prefix, encoded)
+function uuidStringToBytes(uuidStr: string): Uint8Array {
+    const hexNoHyphens = uuidStr.replace(/-/g, '')
+    const arr = new Uint8Array(16)
+
+    for (let i = 0; i < 16; i++) {
+        arr[i] = parseInt(hexNoHyphens.substr(i * 2, 2), 16)
+    }
+
+    return arr
+}
+
+
+export function encodeFromUUID(prefix: string, uuidStr: string): string {
+    const suffix = encode(uuidStringToBytes(uuidStr))
+    return encodeFrom(prefix, suffix)
 }
 
 export function decodeUUIDBytes(tid: ITypeID): Uint8Array {

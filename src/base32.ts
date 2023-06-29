@@ -1,6 +1,6 @@
 const alphabet = '0123456789abcdefghjkmnpqrstvwxyz'.split('').map(char => char.charCodeAt(0))
 
-export function encode(src: number[] | Buffer): string {
+export function encode(src: Uint8Array | number[] | Buffer): string {
     if (src instanceof Buffer) {
         src = Array.from(src)
     }

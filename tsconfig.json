@@ -25,7 +25,11 @@
   },
   "include": [
     "src/**/*",
-    "bin/**/*",
-    "__tests__/**/*"
-  ]
+    "bin/**/*"
+  ],
+  "exclude": [
+    "./test/",
+    "./node_modules/",
+    "./dist/"
+  ],
 }

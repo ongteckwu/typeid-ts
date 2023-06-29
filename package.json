@@ -1,6 +1,6 @@
 {
   "name": "typeid-ts",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "TypeID in Typescript",
   "main": "./build/src/index.js",
   "types": "./src/index.d.ts",
@@ -13,19 +13,28 @@
     "node": ">= 18.12 <19"
   },
   "devDependencies": {
-    "@types/jest": "~29.5",
+    "@types/chai": "^4.3.5",
+    "@types/mocha": "^10.0.1",
+    "@types/sinon": "^10.0.15",
     "@types/node": "~18",
     "@typescript-eslint/eslint-plugin": "~5.59",
     "@typescript-eslint/parser": "~5.59",
     "eslint": "~8.38",
     "eslint-config-prettier": "~8.8",
-    "eslint-plugin-jest": "~27.2",
     "jest": "~29.5",
     "prettier": "~2.8",
     "rimraf": "~5.0",
     "ts-api-utils": "~0.0.44",
-    "ts-jest": "~29.1",
+    "ts-node": "^10.9.1",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "sinon": "^15.2.0",
     "typescript": "~5.0"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "tslib": "~2.5",
+    "uuidv7": "^0.5.2"
   },
   "scripts": {
     "clean": "rimraf coverage build tmp",
@@ -34,9 +43,7 @@
     "build": "tsc -p tsconfig.json",
     "build:watch": "tsc -w -p tsconfig.json",
     "lint": "eslint . --ext .ts --ext .mts",
-    "test": "jest --coverage",
-    "prettier": "prettier --config .prettierrc --write .",
-    "test:watch": "jest --watch"
+    "test": "mocha -r ts-node/register ./test/**/*.ts"
   },
   "keywords": [
     "uuid",
@@ -46,11 +53,6 @@
   ],
   "author": "Ong Teck Wu",
   "license": "Apache-2.0",
-  "dependencies": {
-    "commander": "^11.0.0",
-    "tslib": "~2.5",
-    "uuidv7": "^0.5.2"
-  },
   "volta": {
     "node": "18.12.1"
   }
