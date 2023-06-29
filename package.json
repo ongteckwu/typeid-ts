@@ -1,0 +1,57 @@
+{
+  "name": "typeid-ts",
+  "version": "0.0.3",
+  "description": "TypeID in Typescript",
+  "main": "./build/src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": "./build/src/index.js",
+  "bin": {
+    "typeid": "./build/bin/cli.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">= 18.12 <19"
+  },
+  "devDependencies": {
+    "@types/jest": "~29.5",
+    "@types/node": "~18",
+    "@typescript-eslint/eslint-plugin": "~5.59",
+    "@typescript-eslint/parser": "~5.59",
+    "eslint": "~8.38",
+    "eslint-config-prettier": "~8.8",
+    "eslint-plugin-jest": "~27.2",
+    "jest": "~29.5",
+    "prettier": "~2.8",
+    "rimraf": "~5.0",
+    "ts-api-utils": "~0.0.44",
+    "ts-jest": "~29.1",
+    "typescript": "~5.0"
+  },
+  "scripts": {
+    "clean": "rimraf coverage build tmp",
+    "prebuild": "npm run lint",
+    "prepublishOnly": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "lint": "eslint . --ext .ts --ext .mts",
+    "test": "jest --coverage",
+    "prettier": "prettier --config .prettierrc --write .",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "uuid",
+    "uuidv7",
+    "typeid",
+    "type-id"
+  ],
+  "author": "Ong Teck Wu",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "tslib": "~2.5",
+    "uuidv7": "^0.5.2"
+  },
+  "volta": {
+    "node": "18.12.1"
+  }
+}
