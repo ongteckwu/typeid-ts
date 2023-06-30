@@ -69,7 +69,7 @@ const dec = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
     0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 ]
 
-export function decodeAsBytes(s: string): Uint8Array {
+export function decode(s: string): Uint8Array {
     if (s.length !== 26) {
         throw new Error('Invalid length')
     }
@@ -111,8 +111,8 @@ export function decodeAsBytes(s: string): Uint8Array {
     return id
 }
 
-export function decode(s: string): number[] | Error {
-    const id = decodeAsBytes(s)
+export function decodeToNumber(s: string): number[] | Error {
+    const id = decode(s)
     if (id instanceof Error) {
         return id
     }

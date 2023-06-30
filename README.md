@@ -35,7 +35,7 @@ To decode an existing TypeID into a UUID run:
 
 ```console
 $ typeid decode user_01h2xcejqtf2nbrexx3vqjhp41
-Decoded typeid: {"prefix":"user" "suffix":"01h2xcejqtf2nbrexx3vqjhp41"}
+Decoded typeid: {"type":"user","uuid":"0188bac7-4afa-78aa-bc3b-bd1eef28d881"}
 ```
 
 And to encode an existing UUID into a TypeID run:
@@ -47,7 +47,7 @@ Encoded typeid: user_01h2xcejqtf2nbrexx3vqjhp41
 
 ### Lib Usage
 ```
-import { generateNew, decodeFromString, encodeFromString } from 'typeid'
+import { generateNew, decodeFromString, encodeFromUUID } from 'typeid'
 ```
 
 Creates a new Typeid
@@ -60,11 +60,11 @@ Decodes a Typeid
 ```
 decodeFromString(<typeid>)
 ```
-returns e.g. `{"prefix":"user" "suffix":"1g64w3jc1ncgr2tcsh6mrjtdsn"}`
+returns e.g. `{"type":"user","uuid":"0188bac7-4afa-78aa-bc3b-bd1eef28d881"}`
 
 Encodes a UUID with a prefix
 ```
-encodeFromString(<prefix>, <UUID>)
+encodeFromUUID(<prefix>, <UUID>)
 ```
 returns e.g. `prefix_1g64w3grk1ccvjtd31csgjtdsr`
 
