@@ -7,7 +7,7 @@ export function validatePrefix(prefix: string): boolean {
     if (prefix.length > 63) {
         throw Error(`Invalid prefix: ${prefix}. Prefix length is ${prefix.length}, expected <= 63`)
     }
-    if (!/^[a-z]{0,63}$/.test(prefix)) {
+    if (!/^[a-z_]{0,63}$/.test(prefix)) {
         throw Error(`Invalid prefix: ${prefix}.  Prefix should match [a-z]{0,63}`)
     }
     return true
