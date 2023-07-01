@@ -45,7 +45,7 @@ $ typeid encode user 0188bac7-4afa-78aa-bc3b-bd1eef28d881
 Encoded typeid: user_01h2xcejqtf2nbrexx3vqjhp41
 ```
 
-### Lib Usage
+### Library Usage
 ```
 import { generateNew, decodeFromString, encodeFromUUID } from 'typeid'
 ```
@@ -68,8 +68,6 @@ encodeFromUUID(<prefix>, <UUID>)
 ```
 returns e.g. `prefix_1g64w3grk1ccvjtd31csgjtdsr`
 
-### To-do
-- `npm publish`
 
 ## Related Work
 + [UUIDv7](https://www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-04.html#name-uuid-version-7) - The upcoming UUID standard that TypeIDs are based on.
