@@ -9,12 +9,14 @@ describe('TypeId Tests', () => {
     it('Should create a new typeId', () => {
         const tid = transform(generateNew('prefix'))
         expect(tid.prefix).to.equal('prefix')
+        expect(tid.suffix).to.not.match(/prefix/)
         console.log(`New typeid: ${tid}`)
     })
 
     it('Should create a new typeId without prefix', () => {
         const tid = transform(generateNew(''))
         expect(tid.prefix).to.equal('')
+        expect(tid.suffix).to.not.match(/prefix/)
         console.log(`New typeid without prefix: ${tid}`)
     })
 
@@ -70,6 +72,15 @@ describe('TypeId Tests', () => {
             const tidStr = encodeFromUUID('prefix', uuid)
             const decoded = decodeFromString(tidStr)
             expect(uuid).to.equal(decoded.uuid)
+        }
+    })
+
+    it('It should generate unique ids', () => {
+        const set = new Set()
+        for (let i = 0; i < 100; i++) {
+            const newId = generateNew('knot')
+            expect(set.has(newId)).to.equal(false)
+            set.add(newId)
         }
     })
 })

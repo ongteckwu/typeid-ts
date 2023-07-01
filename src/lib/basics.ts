@@ -1,7 +1,8 @@
 import { validatePrefix, validateSuffix } from './validators.js'
 import { uuidv7 } from 'uuidv7'
-import { encode } from '../base32.js'
 import { ITypeID } from './models/typeid.js'
+import { uuidStringToBytes } from './encoders.js'
+import { encode } from '../base32.js'
 
 export function generateNew(prefix: string): string {
     return from(prefix, '')
@@ -34,7 +35,7 @@ export function from(prefix: string, suffix: string): string {
     }
     if (suffix === '') {
         const uid = uuidv7()
-        suffix = encode(Buffer.from(uid, 'utf8'))
+        suffix = encode(uuidStringToBytes(uid))
     } else {
         if (!validateSuffix(suffix)) {
             throw new Error('Invalid suffix')

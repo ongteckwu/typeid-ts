@@ -21,7 +21,6 @@ export function validateSuffix(suffix: string): boolean {
         decode(suffix)
         return true
     } catch (err) {
-        console.log(err)
         throw Error(`Invalid suffix: ${suffix}`)
     }
 }
