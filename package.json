@@ -1,6 +1,6 @@
 {
   "name": "typeid-ts",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "TypeID in Typescript",
   "main": "./build/src/index.js",
   "types": "./src/index.d.ts",
@@ -9,9 +9,6 @@
     "typeid": "./build/bin/cli.js"
   },
   "type": "module",
-  "engines": {
-    "node": ">= 18.12 <19"
-  },
   "devDependencies": {
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
