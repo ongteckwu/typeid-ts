@@ -46,13 +46,10 @@ Encoded typeid: user_01h2xcejqtf2nbrexx3vqjhp41
 ```
 
 ### Library Usage
-```
- 
-```
-
 Creates a new Typeid
 ```
 import { typeid, generateNew } from 'typeid'
+
 \\ You can either use:
 typeid(<prefix>)
 \\ or
