@@ -47,24 +47,32 @@ Encoded typeid: user_01h2xcejqtf2nbrexx3vqjhp41
 
 ### Library Usage
 ```
-import { generateNew, decodeFromString, encodeFromUUID } from 'typeid'
+ 
 ```
 
 Creates a new Typeid
 ```
+import { typeid, generateNew } from 'typeid'
+\\ You can either use:
+typeid(<prefix>)
+\\ or
 generateNew(<prefix>)
 ```
 returns e.g. `user_1g64w3jc1ncgr2tcsh6mrjtdsn`
 
 Decodes a Typeid
 ```
+import { decodeFromString } from 'typeid'
+
 decodeFromString(<typeid>)
 ```
 returns e.g. `{"type":"user","uuid":"0188bac7-4afa-78aa-bc3b-bd1eef28d881"}`
 
 Encodes a UUID with a prefix
 ```
-encodeFromUUID(<prefix>, <UUID>)
+import { encodeFromUUID } from 'typeid'
+
+encodeFromUUID(<prefix>, <UUID string>)
 ```
 returns e.g. `prefix_1g64w3grk1ccvjtd31csgjtdsr`
 

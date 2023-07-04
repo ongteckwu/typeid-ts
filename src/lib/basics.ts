@@ -8,6 +8,8 @@ export function generateNew(prefix: string): string {
     return from(prefix, '')
 }
 
+export const typeid = generateNew
+
 export function transform(str: string): ITypeID {
     const parts = str.split('_', 2)
     return { prefix: parts[0], suffix: parts[1] }

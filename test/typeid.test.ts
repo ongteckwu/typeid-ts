@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { from, generateNew, transform } from '../src/lib/basics.js'
+import { from, generateNew, transform, typeid } from '../src/lib/basics.js'
 import { decodeFromString } from '../src/lib/decoders.js'
 import { uuidv7 } from 'uuidv7'
 import { encodeFromUUID } from '../src/lib/encoders.js'
@@ -8,6 +8,13 @@ describe('TypeId Tests', () => {
 
     it('Should create a new typeId', () => {
         const tid = transform(generateNew('prefix'))
+        expect(tid.prefix).to.equal('prefix')
+        expect(tid.suffix).to.not.match(/prefix/)
+        console.log(`New typeid: ${tid}`)
+    })
+
+    it('Should create a new typeId new `typeid`', () => {
+        const tid = transform(typeid('prefix'))
         expect(tid.prefix).to.equal('prefix')
         expect(tid.suffix).to.not.match(/prefix/)
         console.log(`New typeid: ${tid}`)
