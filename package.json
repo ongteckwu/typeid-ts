@@ -48,8 +48,5 @@
     "type-id"
   ],
   "author": "Ong Teck Wu",
-  "license": "Apache-2.0",
-  "volta": {
-    "node": "18.12.1"
-  }
+  "license": "Apache-2.0"
 }
