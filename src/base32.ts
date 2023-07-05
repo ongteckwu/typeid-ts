@@ -111,12 +111,8 @@ export function decode(s: string): Uint8Array {
     return id
 }
 
-export function decodeToNumber(s: string): number[] | Error {
+export function decodeToNumber(s: string): number[] {
     const id = decode(s)
-    if (id instanceof Error) {
-        return id
-    }
-
     return Array.from(id)
 }
 
