@@ -86,6 +86,10 @@ export function decode(s: string): Uint8Array {
         }
     }
 
+    // max suffix is 7zzzzzzzzzzzzzzzzzzzzzzzzz
+    if (dec[v[0]] > 7) {
+        throw new Error('Invalid typeid')
+    }
     const id: Uint8Array = new Uint8Array(16)
 
     // 6 bytes timestamp (48 bits)

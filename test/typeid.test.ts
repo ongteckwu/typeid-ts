@@ -56,6 +56,7 @@ describe('TypeId Tests', () => {
         ['crockford_ambiguous', 'ooo41o61o5or3gg28a1c6ot3gi'],
         ['symbols', '00041061050.3gg28a1_60t3gf'],
         ['wrong_alphabet', 'ooooooiiiiiiuuuuuuulllllll'],
+        ['overflow', '8zzzzzzzzzzzzzzzzzzzzzzzzz'],
     ]
 
     invalidSuffixes.forEach(([name, input]) => {
