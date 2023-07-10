@@ -48,7 +48,7 @@ Encoded typeid: user_01h2xcejqtf2nbrexx3vqjhp41
 ### Library Usage
 Creates a new Typeid
 ```
-import { typeid, generateNew } from 'typeid'
+import { typeid, generateNew } from 'typeid-ts'
 
 \\ You can either use:
 typeid(<prefix>)
@@ -59,7 +59,7 @@ returns e.g. `user_1g64w3jc1ncgr2tcsh6mrjtdsn`
 
 Decodes a Typeid
 ```
-import { decodeFromString } from 'typeid'
+import { decodeFromString } from 'typeid-ts'
 
 decodeFromString(<typeid>)
 ```
@@ -67,7 +67,7 @@ returns e.g. `{"type":"user","uuid":"0188bac7-4afa-78aa-bc3b-bd1eef28d881"}`
 
 Encodes a UUID with a prefix
 ```
-import { encodeFromUUID } from 'typeid'
+import { encodeFromUUID } from 'typeid-ts'
 
 encodeFromUUID(<prefix>, <UUID string>)
 ```
