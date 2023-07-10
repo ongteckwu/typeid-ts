@@ -1,10 +1,17 @@
 const alphabet = '0123456789abcdefghjkmnpqrstvwxyz'.split('').map(char => char.charCodeAt(0))
 
+// Reuse a single charCode buffer
+// for encoding and decoding to avoid allocations.
+const charCodes = new Uint8Array(26)
+
 export function encode(src: Uint8Array | number[] | Buffer): string {
-    if (src instanceof Buffer) {
+    if (!Array.isArray(src)) {
         src = Array.from(src)
     }
-    const buffer: Buffer = Buffer.alloc(26, '')
+
+    src = src instanceof Uint8Array || Array.isArray(src) ? src : Array.from(src)
+
+    const buffer = charCodes
 
     // 10 byte timestamp
     buffer[0] = alphabet[(src[0] & 224) >> 5]
@@ -36,7 +43,7 @@ export function encode(src: Uint8Array | number[] | Buffer): string {
     buffer[24] = alphabet[((src[14] & 3) << 3) | ((src[15] & 224) >> 5)]
     buffer[25] = alphabet[src[15] & 31]
 
-    return buffer.toString('binary')
+    return String.fromCharCode(...buffer)
 }
 
 // Byte to index table for O(1) lookups when unmarshaling.
@@ -74,7 +81,7 @@ export function decode(s: string): Uint8Array {
         throw new Error('Invalid length')
     }
 
-    const v: Uint8Array = new Uint8Array(s.length)
+    const v = charCodes
     for (let i = 0; i < s.length; i++) {
         v[i] = s.charCodeAt(i)
     }
