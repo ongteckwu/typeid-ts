@@ -2,29 +2,33 @@
   "name": "typeid-ts",
   "version": "0.2.8",
   "description": "TypeID in Typescript",
-  "main": "./build/src/index.js",
+  "main": "./build/cjs/src/index.js",
   "types": "./src/index.d.ts",
-  "exports": "./build/src/index.js",
+  "exports": {
+    "import": "./build/esm/src/index.js",
+    "require": "./build/cjs/src/index.js"
+  },
   "bin": {
-    "typeid": "./build/bin/cli.js"
+    "typeid": "./build/esm/bin/cli.js"
   },
   "type": "module",
   "devDependencies": {
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
-    "@types/sinon": "^10.0.15",
     "@types/node": "~18",
+    "@types/sinon": "^10.0.15",
     "@typescript-eslint/eslint-plugin": "~5.59",
     "@typescript-eslint/parser": "~5.59",
+    "chai": "^4.3.7",
     "eslint": "~8.38",
     "eslint-config-prettier": "~8.8",
+    "mocha": "^10.2.0",
     "prettier": "~2.8",
     "rimraf": "~5.0",
+    "shx": "^0.3.4",
+    "sinon": "^15.2.0",
     "ts-api-utils": "~0.0.44",
     "ts-node": "^10.9.1",
-    "chai": "^4.3.7",
-    "mocha": "^10.2.0",
-    "sinon": "^15.2.0",
     "typescript": "~5.0"
   },
   "dependencies": {
@@ -36,7 +40,9 @@
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "prepublishOnly": "tsc -p tsconfig.json",
-    "build": "tsc -p tsconfig.json",
+    "build": "npm run build-esm && npm run build-cjs",
+    "build-esm": "tsc -p tsconfig.json --module es2022 --outDir build/esm/ && echo '{\"type\": \"module\"}' > build/esm/package.json",
+    "build-cjs": "tsc -p tsconfig.json --module commonjs --outDir build/cjs/ && shx echo '{\"type\": \"commonjs\"}' > build/cjs/package.json",
     "build:watch": "tsc -w -p tsconfig.json",
     "lint": "eslint . --ext .ts --ext .mts",
     "test": "mocha -r ts-node/register ./test/**/*.ts"
