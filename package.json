@@ -11,7 +11,6 @@
   "bin": {
     "typeid": "./build/esm/bin/cli.js"
   },
-  "type": "module",
   "devDependencies": {
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
