@@ -73,20 +73,6 @@ encodeFromUUID(<prefix>, <UUID string>)
 ```
 returns e.g. `prefix_1g64w3grk1ccvjtd31csgjtdsr`
 
-### CommonJS import
-If your code is commonJS, you can import in this manner
-```
-export const importDynamic = new Function(
-  'modulePath',
-  'return import(modulePath)',
-)
-
-export async function generateNewTypeId(type: string) {
-  const { typeid } = await importDynamic('typeid-ts')
-  return typeid(type)
-}
-```
-
 ## Related Work
 + [UUIDv7](https://www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-04.html#name-uuid-version-7) - The upcoming UUID standard that TypeIDs are based on.
 + [typeid-go](https://github.com/jetpack-io/typeid-go) - Ported from this library
