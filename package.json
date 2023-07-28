@@ -1,9 +1,10 @@
 {
   "name": "typeid-ts",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "TypeID in Typescript",
   "main": "./build/cjs/src/index.js",
   "types": "./src/index.d.ts",
+  "type": "module",
   "exports": {
     "import": "./build/esm/src/index.js",
     "require": "./build/cjs/src/index.js"
