@@ -1,8 +1,13 @@
 import { validatePrefix, validateSuffix } from './validators.js'
-import { uuidv7 } from 'uuidv7'
 import { ITypeID } from './models/typeid.js'
 import { uuidStringToBytes } from './encoders.js'
 import { encode } from '../base32.js'
+
+let uuidv7
+(async () => {
+  const mod = await import('uuidv7')
+  uuidv7 = mod.uuidv7
+})()
 
 export function generateNew(prefix: string): string {
     return from(prefix, '')
