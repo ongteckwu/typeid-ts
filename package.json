@@ -41,8 +41,8 @@
     "prebuild": "npm run lint",
     "prepublishOnly": "tsc -p tsconfig.json",
     "build": "npm run build-esm && npm run build-cjs",
-    "build-esm": "tsc -p tsconfig.json --module es2022 --outDir build/esm/ && echo '{\"type\": \"module\"}' > build/esm/package.json",
-    "build-cjs": "tsc -p tsconfig.json --module commonjs --outDir build/cjs/ && shx echo '{\"type\": \"commonjs\"}' > build/cjs/package.json",
+    "build-esm": "rm -rf build/esm && tsc -p tsconfig.json --module es2022 --outDir build/esm/ && echo '{\"type\": \"module\"}' > build/esm/package.json",
+    "build-cjs": "rm -rf build/cjs && tsc -p tsconfig.json --module commonjs --outDir build/cjs/ && shx echo '{\"type\": \"commonjs\"}' > build/cjs/package.json",
     "build:watch": "tsc -w -p tsconfig.json",
     "lint": "eslint . --ext .ts --ext .mts",
     "test": "mocha -r ts-node/register ./test/**/*.ts"
