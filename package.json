@@ -1,6 +1,6 @@
 {
   "name": "typeid-ts",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "TypeID in Typescript",
   "main": "./build/cjs/src/index.js",
   "types": "./src/index.d.ts",
