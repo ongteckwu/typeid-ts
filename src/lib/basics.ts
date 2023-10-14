@@ -5,8 +5,8 @@ import { encode } from '../base32.js'
 
 let uuidv7
 (async () => {
-  const mod = await import('uuidv7')
-  uuidv7 = mod.uuidv7
+    const mod = await import('uuidv7')
+    uuidv7 = mod.uuidv7
 })()
 
 export function generateNew(prefix: string): string {
