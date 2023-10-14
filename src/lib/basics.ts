@@ -3,7 +3,7 @@ import { ITypeID } from './models/typeid.js'
 import { uuidStringToBytes } from './encoders.js'
 import { encode } from '../base32.js'
 
-let uuidv7
+let uuidv7: () => string
 (async () => {
     const mod = await import('uuidv7')
     uuidv7 = mod.uuidv7
