@@ -7,7 +7,7 @@
     ],
     "moduleResolution": "node16",
     "rootDir": ".",
-    "outDir": "build",
+    "outDir": "build/esm",
     "declaration": true,
     "declarationMap": true,
     "allowSyntheticDefaultImports": true,
@@ -27,6 +27,8 @@
     "src/**/*",
     "bin/**/*",
     "test/**/*",
+    "test_builds/esm/*.ts",
+    "test_builds/cjs/*.ts",
   ],
   "exclude": [
     "./node_modules/",

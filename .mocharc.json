@@ -13,6 +13,7 @@
     "ui": "bdd",
     "loader": "ts-node/esm",
     "watch-files": [
-        "test/**/*test.ts"
+        "test/**/*test.ts",
+        "test_builds/**/*test.ts"
     ]
 }
