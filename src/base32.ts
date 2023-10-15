@@ -9,12 +9,8 @@ export function encode(src: Uint8Array | number[] | Buffer): string {
         throw new Error('Source array is empty or undefined.')
     }
 
-    if (Buffer.isBuffer(src)) {
+    if (Buffer.isBuffer(src) || src instanceof Uint8Array) {
         src = Array.from(src)
-    }
-
-    if (!Array.isArray(src) && !(src instanceof Uint8Array)) {
-        throw new Error('Input must be an array or a Buffer.')
     }
 
     src = src instanceof Uint8Array || Array.isArray(src) ? src : Array.from(src)
