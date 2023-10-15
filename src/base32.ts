@@ -5,13 +5,27 @@ const alphabet = '0123456789abcdefghjkmnpqrstvwxyz'.split('').map(char => char.c
 const charCodes = new Uint8Array(26)
 
 export function encode(src: Uint8Array | number[] | Buffer): string {
-    if (!Array.isArray(src)) {
+    if (!src || src.length === 0) {
+        throw new Error('Source array is empty or undefined.')
+    }
+
+    if (Buffer.isBuffer(src)) {
         src = Array.from(src)
+    }
+
+    if (!Array.isArray(src) && !(src instanceof Uint8Array)) {
+        throw new Error('Input must be an array or a Buffer.')
     }
 
     src = src instanceof Uint8Array || Array.isArray(src) ? src : Array.from(src)
 
     const buffer = charCodes
+
+    for (let i = 0; i < src.length; i++) {
+        if (typeof src[i] !== 'number') {
+            throw new Error(`Element at index ${i} is not a number.`)
+        }
+    }
 
     // 10 byte timestamp
     buffer[0] = alphabet[(src[0] & 224) >> 5]
@@ -77,11 +91,12 @@ const dec = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 ]
 
 export function decode(s: string): Uint8Array {
-    if (s.length !== 26) {
+    if (!s || s.length !== 26) {
         throw new Error('Invalid length')
     }
 
     const v = charCodes
+
     for (let i = 0; i < s.length; i++) {
         v[i] = s.charCodeAt(i)
     }
